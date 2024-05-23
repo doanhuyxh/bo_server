@@ -1,0 +1,6 @@
+C:\Users\Doanh\source\repos\ServerBo2\obj\Debug\ServerBo2.njsproj.AssemblyReference.cache
+C:\Users\Doanh\source\repos\ServerBo2\obj\Debug\ServerBo2.njsproj.CoreCompileInputs.cache
+C:\Users\Doanh\source\repos\ServerBo2\bin\Microsoft.NodejsTools.WebRole.dll
+D:\WebNodeJs\node10\BO\ServerBo\obj\Debug\ServerBo2.njsproj.AssemblyReference.cache
+D:\WebNodeJs\node10\BO\ServerBo\obj\Debug\ServerBo2.njsproj.CoreCompileInputs.cache
+D:\WebNodeJs\node10\BO\ServerBo\bin\Microsoft.NodejsTools.WebRole.dll
