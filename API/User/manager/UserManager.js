@@ -10,6 +10,9 @@ const CommonFunctions = require('../../Common/CommonFunctions');
 const UserCommissionFunctions = require('../../Commission/UserCommisionFunctions');
 const UserFunctions = require("../UserFunctions");
 const TokenFunction = require('../../../utils/token');
+
+const WithdrawTransactionResource = require("../../WithdrawTransaction/resourceAccess/WithdrawTransactionResourceAccess");
+
 async function insert(req) {
   return new Promise(async (resolve, reject) => {
     try {
@@ -135,6 +138,22 @@ async function staffEditUser(req, res) {
       let userData = req.payload.data;
       let userId = req.payload.id;
       let updateResult = await UserResourceAccess.updateById(userId, userData);
+
+      console.log("updateResult", userData)
+      // lấy ra các bản lịch sử nạp đang chờ
+      let withdrawList = await WithdrawTransactionResource.find({ userId: userId, status: "New" });
+      //sử lý cập nhật lại thông tin tài khoản
+      console.log("withdrawList", withdrawList)
+      for (let i = 0; i < withdrawList.length; i++) {
+        let transaction = withdrawList[i];
+        transaction.sotaikhoan = userData.sotaikhoan;
+        transaction.tentaikhoan = userData.tentaikhoan;
+        transaction.tennganhang = userData.tennganhang;
+        await WithdrawTransactionResource.updateById(transaction.withdrawTransactionId, transaction)
+      }
+      let value =await WithdrawTransactionResource.find({ userId: userId, status: "New" });
+      console.log("withdrawList2", value)
+
       if (updateResult) {
         resolve("success");
       } else {

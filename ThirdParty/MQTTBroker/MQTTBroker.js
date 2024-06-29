@@ -38,14 +38,14 @@ mqttBroker.listen(MQTT_PORT, function () {
 //});
 
 //Websocket SSL 'WSS'
-const httpsServer = require('https').createServer({
-  "key" : fs.readFileSync( `${process.env.KEY_PATH}openssl/private.key` ),
-  "cert": fs.readFileSync( `${process.env.KEY_PATH}openssl/certificate.crt` ),
-});
-ws.createServer({ server: httpsServer }, aedes.handle)
-httpsServer.listen(WEBSOCKET_SSL_PORT, function () {
-    console.log('Aedes MQTT-WSS listening on port: ' + WEBSOCKET_SSL_PORT)
-});
+// const httpsServer = require('https').createServer({
+//   "key" : fs.readFileSync( `${process.env.KEY_PATH}openssl/private.key` ),
+//   "cert": fs.readFileSync( `${process.env.KEY_PATH}openssl/certificate.crt` ),
+// });
+// ws.createServer({ server: httpsServer }, aedes.handle)
+// httpsServer.listen(WEBSOCKET_SSL_PORT, function () {
+//     console.log('Aedes MQTT-WSS listening on port: ' + WEBSOCKET_SSL_PORT)
+// });
 
 aedes.on('clientReady', function(client) {
   console.log('[MQTT] client connected ' + client.id);
